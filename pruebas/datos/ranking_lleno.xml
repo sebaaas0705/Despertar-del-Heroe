@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ranking>
+  <jugador>
+    <nombre>Lucia</nombre>
+    <puntos>380</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Marcos</nombre>
+    <puntos>350</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Irene</nombre>
+    <puntos>300</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Pablo</nombre>
+    <puntos>300</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Nora</nombre>
+    <puntos>200</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Hugo</nombre>
+    <puntos>200</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Sara</nombre>
+    <puntos>100</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Leo</nombre>
+    <puntos>100</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Alba</nombre>
+    <puntos>100</puntos>
+  </jugador>
+  <jugador>
+    <nombre>Dani</nombre>
+    <puntos>100</puntos>
+  </jugador>
+</ranking>
