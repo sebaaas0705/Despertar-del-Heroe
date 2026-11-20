@@ -20,6 +20,12 @@ java -cp bin DespertardelHeroe < pruebas\entradas\04_ranking_lleno_no_entra.txt 
 del /q ranking.xml 2>nul
 java -cp bin DespertardelHeroe < pruebas\entradas\05_partida_atacando.txt > pruebas\salidas\05.txt
 
+copy /y pruebas\datos\ranking_lleno.xml ranking.xml >nul
+java -cp bin DespertardelHeroe < pruebas\entradas\06_ranking_lleno_empate.txt > pruebas\salidas\06.txt
+
+del /q ranking.xml 2>nul
+java -cp bin DespertardelHeroe < pruebas\entradas\07_reinicio_entre_partidas.txt > pruebas\salidas\07.txt
+
 rem Se devuelve el ranking real
 del /q ranking.xml 2>nul
 if exist ranking.xml.bak move /y ranking.xml.bak ranking.xml >nul
