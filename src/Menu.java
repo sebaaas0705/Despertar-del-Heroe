@@ -30,8 +30,24 @@ public class Menu
             System.out.println("  " + Constantes.NOMBRES_ENEMIGOS[i] + ": "
                     + Constantes.VIDA_ENEMIGOS[i] + " de vida.");
         }
-        System.out.println("Cada enemigo vale " + Constantes.PUNTOS_POR_ENEMIGO
-                + " puntos. Si ganas la aventura, se suma tu vida final.");
+        System.out.println("Los enemigos golpean entre " + Constantes.DANIO_ENEMIGO_MIN
+                + " y " + Constantes.DANIO_ENEMIGO_MAX + " de danio.");
+
+        System.out.println("\nAcciones en combate:");
+        System.out.println("  1. Atacar: golpeas con tu arma y, si sobrevive, el enemigo responde.");
+        System.out.println("  2. Usar pocion: curas " + Constantes.CURACION_POCION
+                + " (maximo " + Constantes.VIDA_MAXIMA + ") y el enemigo responde.");
+        System.out.println("     Sin pociones o con la vida llena no se gasta el turno.");
+        System.out.println("  3. Consultar inventario: no gasta turno.");
+        System.out.println("  4. Abandonar: terminas la aventura con los puntos que lleves.");
+        System.out.println("  5. Cambiar arma: no gasta turno.");
+
+        System.out.println("\nPuntuacion:");
+        System.out.println("  " + Constantes.PUNTOS_POR_ENEMIGO
+                + " puntos por cada enemigo derrotado.");
+        System.out.println("  Si vences a los 3, se suma tu vida final como bonificacion.");
+        System.out.println("  Toda partida terminada (incluso abandonada) entra al ranking"
+                + " si tiene sitio entre los " + Constantes.CAPACIDAD_RANKING + " mejores.");
     }
 
     static int leerOpcion(Scanner scanner, int min, int max)
