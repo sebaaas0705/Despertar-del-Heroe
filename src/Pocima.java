@@ -39,7 +39,9 @@ public class Pocima
         }
         for (int i = 0; i < numPociones; i++)
         {
-            System.out.println((i + 1) + ". " + inventario[i]);
+            System.out.println((i + 1) + ". " + inventario[i] + " (+"
+                    + Constantes.CURACION_POCION + " de vida)");
         }
+        System.out.println("Huecos ocupados: " + numPociones + "/" + inventario.length);
     }
 }
