@@ -154,3 +154,68 @@ Los arrays se pasan por referencia (se copia la dirección del array, no su
 contenido). Por eso la vida y las pociones del héroe están en `int[] estadoHeroe`:
 cuando `Enemigo.atacar` cambia `estadoHeroe[VIDA]`, el cambio se ve en el combate y
 en la partida. Lo mismo pasa con los arrays del ranking y del inventario.
+
+---
+
+## 4. Implementación
+
+### Menú
+
+`main` usa un `do-while` con `switch` para que el menú salga al menos una vez y
+vuelva a salir después de cada partida, hasta elegir 4. Todas las opciones se leen
+con `Menu.leerOpcion`, que usa `hasNextInt()`: si no es un número descarta la línea
+entera con `nextLine()` y vuelve a preguntar; si es un número fuera de rango
+también. Después de `nextInt()` hay un `nextLine()` para quitar el salto de línea,
+porque si no el `nextLine()` del nombre lo leería vacío.
+
+### Combate
+
+`simularCombate` tiene un `while` que sigue mientras el resultado sea
+`SIN_RESOLVER`. Atacar resta el daño a la vida del enemigo con `Math.max(0, ...)`
+para que no sea negativa, y solo si el enemigo sigue vivo llama a `Enemigo.atacar`.
+Usar poción solo provoca el ataque si `usarPocion` devuelve `true`. Consultar el
+inventario y cambiar de arma no hacen atacar al enemigo. Una opción no válida ni
+siquiera llega al `switch` porque `leerOpcion` no la deja pasar.
+
+El daño sale de `numeroAleatorio(min, max) = min + (int)(Math.random() * (max - min + 1))`.
+Por ejemplo, para 10-20: `Math.random() * 11` da de 0 a 10,99..., al pasarlo a
+`int` queda de 0 a 10 y al sumar 10 queda de 10 a 20, los dos incluidos.
+
+### Inventario
+
+Es un `String[3]` y el contador de pociones (`estadoHeroe[POCIONES]`) dice cuántas
+posiciones están ocupadas, siempre las primeras. Al mostrarlo se recorre hasta el
+contador, no hasta `length`, para no enseñar huecos vacíos. Al beber se vacía la
+posición `contador - 1` (la última ocupada) y se resta 1 al contador; antes se
+comprueba que esa posición está dentro del array y no es `null`.
+
+### Puntuación
+
+En `iniciarPartida` se suman 100 puntos cada vez que `simularCombate` devuelve
+`VICTORIA`. Solo si se ganan los tres combates se suma `estadoHeroe[VIDA]`. Da igual
+cómo acabe la partida: siempre se llama a `registrarEnRanking`.
+
+### Ranking
+
+Dos arrays paralelos de 10 posiciones. `insertarOrdenado` busca la posición
+avanzando mientras la puntuación nueva **no** sea mayor que la de esa posición
+(`!(puntosNuevos > puntos[posicion])`); así, en un empate el nuevo queda detrás del
+antiguo. Luego desplaza los de detrás una posición hacia el final, moviendo nombre
+y puntos a la vez para que no se desordenen. Si el ranking está lleno solo entra si
+es mayor que el décimo, y el décimo se pierde.
+
+### Ficheros XML y HTML
+
+Al terminar cada partida se guarda `ranking.xml` y `inventario.xml` con DOM y se
+genera `ranking.html` con `ranking.xsl`. Al arrancar se carga `ranking.xml`
+metiendo cada jugador con `insertarOrdenado`, así aunque alguien edite el XML a mano
+el ranking sigue ordenado y con máximo 10. El inventario guardado solo se muestra
+como información, porque cada partida nueva tiene que empezar con 3 pociones.
+
+### Decisiones
+
+- Separar el código en varias clases con métodos `static` para que cada fichero sea
+  corto y sea más fácil encontrar cada parte. Siguen sin ser clases de dominio (no
+  se crean objetos `Heroe` ni `Enemigo`), solo agrupan métodos.
+- No usar variables globales que cambien: todo lo que cambia se pasa por parámetro.
+- `estadoHeroe` como array para poder modificarlo desde otros métodos.
