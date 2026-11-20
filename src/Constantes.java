@@ -15,8 +15,8 @@ public class Constantes
         {"Llamarada", "Coletazo", "Bola de fuego"}
     };
     static final int[] VIDA_ENEMIGOS = {40, 60, 80};
-    static final int DANIO_ENEMIGO_MIN = 7;
-    static final int DANIO_ENEMIGO_MAX = 17;
+    static final int DANIO_ENEMIGO_MIN = 5;
+    static final int DANIO_ENEMIGO_MAX = 15;
     static final int PUNTOS_POR_ENEMIGO = 100;
 
     static final int CAPACIDAD_INVENTARIO = 3;
