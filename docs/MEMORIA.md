@@ -219,3 +219,51 @@ como información, porque cada partida nueva tiene que empezar con 3 pociones.
   se crean objetos `Heroe` ni `Enemigo`), solo agrupan métodos.
 - No usar variables globales que cambien: todo lo que cambia se pasa por parámetro.
 - `estadoHeroe` como array para poder modificarlo desde otros métodos.
+
+---
+
+## 5. Pruebas
+
+La tabla completa (entrada, resultado esperado y obtenido) está en `PRUEBAS.md`.
+Se probaron 16 casos: nombre vacío, texto en vez de número, opción fuera de rango,
+victoria, derrota, pociones (con vida llena y con vida baja), consultar inventario,
+abandono, ranking vacío, ranking entre ejecuciones, empate, ranking lleno (no entra,
+empata con el décimo y entra), reinicio entre partidas y el HTML.
+
+Las entradas se guardaron en `pruebas/entradas` para poder repetirlas con
+`pruebas\ejecutar_pruebas.bat`. Como el daño es aleatorio, en el combate se
+comprobó que los golpes estén en su rango y que se cumplan las reglas.
+
+*(Añadir aquí capturas de las pruebas más importantes con su explicación.)*
+
+**Error encontrado:** al curarse con 89 de vida el mensaje decía "Te curas 25"
+pero la vida solo llegaba a 100. Se corrigió calculando lo curado de verdad.
+
+---
+
+## 6. Desarrollo con Git
+
+Repositorio: https://github.com/sebaaas0705/Despertar-del-Heroe
+
+Se trabajó con una rama por fase y al acabar cada una se unió a `main` con merge:
+
+| Rama | Qué se hizo |
+|------|-------------|
+| `fase0-estructura` | `.gitignore` (bin, target, IDE, ficheros generados), código inicial y README |
+| `fase1-reglas` | Daño enemigo 5-15 como pide el enunciado y ayuda completa |
+| `fase2-inventario` | Comprobar límites del array al gastar poción y mejorar la consulta |
+| `fase3-ranking` | Separar `insertarOrdenado` y cargar el XML ordenado |
+| `fase4-documentacion` | Comentarios Javadoc con finalidad, parámetros y retorno |
+| `fase5-pruebas` | Entradas de prueba, script y tabla de pruebas |
+| `fase6-entrega` | README final, memoria y presentación |
+
+Commits representativos:
+
+- *Ajustar el daño enemigo al rango 5-15 que marca el enunciado*: al revisar las
+  reglas vi que tenía 7-17 y lo cambié en `Constantes`, sin tocar nada más.
+- *Separar la inserción ordenada del ranking en insertarOrdenado*: así el mismo
+  método sirve para registrar una partida y para cargar el XML.
+- *Corregir el mensaje de curación cuando la vida llega al máximo*: error que salió
+  haciendo las pruebas.
+
+*(Añadir captura de `git log --oneline --graph --all` o de la red de ramas de GitHub.)*
