@@ -22,3 +22,22 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Carpetas de compilacion
+bin/
+target/
+out/
+
+# Configuracion local del IDE
+.vscode/
+.idea/
+*.iml
+.settings/
+.classpath
+.project
+.DS_Store
+
+# Datos generados al jugar (se crean al terminar una partida)
+/ranking.xml
+/inventario.xml
+/ranking.html
