@@ -1,7 +1,13 @@
 import java.util.Scanner;
 
+/**
+ * Menu principal, ayuda y lectura validada de opciones numericas.
+ */
 public class Menu
 {
+    /**
+     * Muestra las opciones del menu principal.
+     */
     static void mostrarMenu()
     {
         System.out.println("\n===== EL DESPERTAR DEL HEROE =====");
@@ -11,6 +17,10 @@ public class Menu
         System.out.println("4. Salir");
     }
 
+    /**
+     * Explica las reglas, las acciones de combate y como se calcula la puntuacion.
+     * Los valores salen de Constantes para que la ayuda nunca quede desfasada.
+     */
     static void mostrarAyuda()
     {
         System.out.println("\n--- AYUDA ---");
@@ -51,6 +61,16 @@ public class Menu
                 + " si tiene sitio entre los " + Constantes.CAPACIDAD_RANKING + " mejores.");
     }
 
+    /**
+     * Pide un numero hasta que sea valido. Si el usuario escribe texto o un numero
+     * fuera de rango, avisa y vuelve a preguntar sin cerrar el programa.
+     * Se usa nextLine() para descartar la linea entera (no solo una palabra).
+     *
+     * @param scanner lector de teclado compartido por todo el programa
+     * @param min     valor minimo aceptado (incluido)
+     * @param max     valor maximo aceptado (incluido)
+     * @return la opcion elegida, siempre entre min y max
+     */
     static int leerOpcion(Scanner scanner, int min, int max)
     {
         int opcion = min - 1;
