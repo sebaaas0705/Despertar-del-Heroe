@@ -3,12 +3,30 @@ public class Ranking
     static int registrarEnRanking(String[] nombres, int[] puntos,
             int numRegistros, String nombre, int puntosNuevos)
     {
+        int posicion = insertarOrdenado(nombres, puntos, numRegistros, nombre, puntosNuevos);
+
+        if (posicion < 0)
+        {
+            System.out.println("Tu puntuacion no entra en el ranking.");
+            return numRegistros;
+        }
+
+        if (numRegistros < Constantes.CAPACIDAD_RANKING)
+        {
+            numRegistros++;
+        }
+        System.out.println("Registrado en el ranking en la posicion " + (posicion + 1) + ".");
+        return numRegistros;
+    }
+
+    static int insertarOrdenado(String[] nombres, int[] puntos,
+            int numRegistros, String nombre, int puntosNuevos)
+    {
         boolean lleno = (numRegistros == Constantes.CAPACIDAD_RANKING);
 
         if (lleno && !(puntosNuevos > puntos[Constantes.CAPACIDAD_RANKING - 1]))
         {
-            System.out.println("Tu puntuacion no entra en el ranking.");
-            return numRegistros;
+            return -1;
         }
 
         int posicion = 0;
@@ -26,13 +44,7 @@ public class Ranking
 
         nombres[posicion] = nombre;
         puntos[posicion] = puntosNuevos;
-
-        if (!lleno)
-        {
-            numRegistros++;
-        }
-        System.out.println("Registrado en el ranking en la posicion " + (posicion + 1) + ".");
-        return numRegistros;
+        return posicion;
     }
 
     static void mostrarRanking(String[] nombres, int[] puntos, int numRegistros)
