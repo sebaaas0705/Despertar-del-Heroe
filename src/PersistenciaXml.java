@@ -141,6 +141,8 @@ public class PersistenciaXml
                     .newTransformer(new StreamSource(new File(Constantes.FICHERO_XSL)));
             transformer.transform(new StreamSource(new File(Constantes.FICHERO_RANKING)),
                     new StreamResult(new File(Constantes.FICHERO_HTML)));
+            System.out.println("Ranking actualizado en " + Constantes.FICHERO_RANKING
+                    + " y " + Constantes.FICHERO_HTML + ".");
         }
         catch (Exception e)
         {
