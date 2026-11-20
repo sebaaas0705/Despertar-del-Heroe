@@ -234,7 +234,77 @@ Las entradas se guardaron en `pruebas/entradas` para poder repetirlas con
 `pruebas\ejecutar_pruebas.bat`. Como el daño es aleatorio, en el combate se
 comprobó que los golpes estén en su rango y que se cumplan las reglas.
 
-*(Añadir aquí capturas de las pruebas más importantes con su explicación.)*
+**Figura 1**
+
+*Menú principal y ayuda con reglas, acciones y puntuación*
+
+![Figura 1](capturas/01_menu_ayuda.png)
+
+*Nota.* La ayuda saca los valores de Constantes, así que si cambia una regla la ayuda cambia sola.
+
+**Figura 2**
+
+*Consulta del ranking sin partidas guardadas*
+
+![Figura 2](capturas/02_ranking_vacio.png)
+
+*Nota.* Sin ranking.xml el programa muestra un mensaje informativo en lugar de una lista vacía.
+
+**Figura 3**
+
+*Validación de texto, opciones fuera de rango y nombre vacío*
+
+![Figura 3](capturas/03_validaciones.png)
+
+*Nota.* Ninguna entrada incorrecta cierra el programa; se avisa y se vuelve a preguntar.
+
+**Figura 4**
+
+*Consulta del inventario y uso de pociones en combate*
+
+![Figura 4](capturas/04_pociones_inventario.png)
+
+*Nota.* Con la vida llena la poción no se gasta y el enemigo no ataca. Con 89 de vida se curan 11 (no 25, porque el máximo es 100) y el enemigo responde. El inventario pasa de 3/3 a 2/3.
+
+**Figura 5**
+
+*Final de una partida ganada*
+
+![Figura 5](capturas/05_victoria.png)
+
+*Nota.* Puntuación = 3 × 100 + vida final. El enemigo derrotado ya no ataca.
+
+**Figura 6**
+
+*Partida perdida*
+
+![Figura 6](capturas/06_derrota.png)
+
+*Nota.* La vida se queda en 0 y no es negativa. No hay bonificación por vida.
+
+**Figura 7**
+
+*Ranking lleno con una puntuación que no entra*
+
+![Figura 7](capturas/07_ranking_lleno.png)
+
+*Nota.* Con 10 registros solo entra una puntuación mayor que la décima (100).
+
+**Figura 8**
+
+*Empate entre dos partidas con la misma puntuación*
+
+![Figura 8](capturas/08_empate.png)
+
+*Nota.* Sebas jugó antes que Ana y por eso queda delante con los mismos puntos.
+
+**Figura 9**
+
+*Ranking generado en HTML con la plantilla ranking.xsl*
+
+![Figura 9](capturas/09_ranking_html.png)
+
+*Nota.* Sebas ha ganado con 311 puntos y ha entrado en el puesto 3; Dani (décimo) ha salido.
 
 **Error encontrado:** al curarse con 89 de vida el mensaje decía "Te curas 25"
 pero la vida solo llegaba a 100. Se corrigió calculando lo curado de verdad.
@@ -266,7 +336,13 @@ Commits representativos:
 - *Corregir el mensaje de curación cuando la vida llega al máximo*: error que salió
   haciendo las pruebas.
 
-*(Añadir captura de `git log --oneline --graph --all` o de la red de ramas de GitHub.)*
+**Figura 10**
+
+*Historial del repositorio con las ramas de cada fase*
+
+![Figura 10](capturas/10_historial_git.png)
+
+*Nota.* Salida de `git log --oneline --graph --all`. Cada rama se une a `main` con un merge.
 
 ---
 
@@ -313,9 +389,16 @@ ayuda a tener cada cambio separado.
 - Más enemigos o niveles de dificultad.
 - Un objeto que se pueda encontrar al ganar un combate.
 
-### Fuentes consultadas
+### Referencias
 
-- Apuntes y ejercicios de clase de Programación y Lenguaje de marcas.
-- Documentación oficial de Java: `java.util.Scanner`, `Math.random()`,
-  `javax.xml.parsers` y `javax.xml.transform`.
-- Enunciado del proyecto "El despertar del héroe".
+Chacon, S. y Straub, B. (2014). *Pro Git* (2.ª ed.). Apress. https://git-scm.com/book/es/v2
+
+Oracle. (2023). *Class Math* (Java SE 21 & JDK 21). https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html
+
+Oracle. (2023). *Class Scanner* (Java SE 21 & JDK 21). https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Scanner.html
+
+Oracle. (2023). *Package javax.xml.transform* (Java SE 21 & JDK 21). https://docs.oracle.com/en/java/javase/21/docs/api/java.xml/javax/xml/transform/package-summary.html
+
+World Wide Web Consortium. (1999). *XSL Transformations (XSLT) Version 1.0*. https://www.w3.org/TR/xslt-10/
+
+XTART Formación Profesional. (2026). *El despertar del héroe: Aventura textual en Java* [Enunciado del proyecto, 1.º DAM].
