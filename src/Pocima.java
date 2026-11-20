@@ -1,5 +1,17 @@
+/**
+ * Uso y consulta del inventario de pociones (array fijo + contador).
+ */
 public class Pocima
 {
+    /**
+     * Consume la ultima pocion ocupada del inventario y cura al heroe sin pasar
+     * de la vida maxima. Si no hay pociones o la vida esta llena no hace nada.
+     *
+     * @param estadoHeroe {vida, pociones, arma}; el contador de pociones hace de
+     *                    numero de posiciones ocupadas del inventario
+     * @param inventario  array de pociones; la posicion usada queda a null
+     * @return true si se ha bebido la pocion (gasta turno), false si no
+     */
     static boolean usarPocion(int[] estadoHeroe, String[] inventario)
     {
         if (estadoHeroe[Constantes.POCIONES] <= 0)
@@ -30,6 +42,13 @@ public class Pocima
         return true;
     }
 
+    /**
+     * Recorre solo las posiciones ocupadas (hasta el contador, no hasta length).
+     * No gasta turno.
+     *
+     * @param inventario  array de pociones
+     * @param numPociones numero de posiciones ocupadas
+     */
     static void mostrarInventario(String[] inventario, int numPociones)
     {
         System.out.println("--- Inventario ---");
