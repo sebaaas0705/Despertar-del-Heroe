@@ -54,15 +54,23 @@ public class PersistenciaXml
                     .newDocumentBuilder().parse(fichero);
             NodeList jugadores = doc.getElementsByTagName("jugador");
 
-            for (int i = 0; i < jugadores.getLength()
-                    && numRegistros < Constantes.CAPACIDAD_RANKING; i++)
+            // Se inserta cada registro ordenado: si alguien edita el XML a mano
+            // y lo desordena o mete mas de 10, el ranking sigue siendo valido
+            for (int i = 0; i < jugadores.getLength(); i++)
             {
                 Element jugador = (Element) jugadores.item(i);
-                nombres[numRegistros] = jugador.getElementsByTagName("nombre")
-                        .item(0).getTextContent();
-                puntos[numRegistros] = Integer.parseInt(jugador
-                        .getElementsByTagName("puntos").item(0).getTextContent());
-                numRegistros++;
+                String nombre = jugador.getElementsByTagName("nombre")
+                        .item(0).getTextContent().trim();
+                int puntosLeidos = Integer.parseInt(jugador
+                        .getElementsByTagName("puntos").item(0).getTextContent().trim());
+
+                if (!nombre.isEmpty() && puntosLeidos >= 0
+                        && Ranking.insertarOrdenado(nombres, puntos, numRegistros,
+                                nombre, puntosLeidos) >= 0
+                        && numRegistros < Constantes.CAPACIDAD_RANKING)
+                {
+                    numRegistros++;
+                }
             }
         }
         catch (Exception e)
@@ -133,6 +141,8 @@ public class PersistenciaXml
                     .newTransformer(new StreamSource(new File(Constantes.FICHERO_XSL)));
             transformer.transform(new StreamSource(new File(Constantes.FICHERO_RANKING)),
                     new StreamResult(new File(Constantes.FICHERO_HTML)));
+            System.out.println("Ranking actualizado en " + Constantes.FICHERO_RANKING
+                    + " y " + Constantes.FICHERO_HTML + ".");
         }
         catch (Exception e)
         {
