@@ -27,8 +27,7 @@ public class Combate
             {
                 case 1:
                     int arma = estadoHeroe[Constantes.ARMA];
-                    danio = numeroAleatorio(Constantes.ATAQUE_MIN_ARMAS[arma],
-                            Constantes.ATAQUE_MAX_ARMAS[arma]);
+                    danio = numeroAleatorio(Constantes.ATAQUE_MIN, Constantes.ATAQUE_MAX);
                     vidaEnemigo = Math.max(0, vidaEnemigo - danio);
                     System.out.println(Constantes.GOLPES_ARMAS[arma] + " con tu "
                             + Constantes.NOMBRES_ARMAS[arma] + " al " + nombreEnemigo

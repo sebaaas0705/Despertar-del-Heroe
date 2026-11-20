@@ -5,8 +5,10 @@ public class Constantes
     static final int CURACION_POCION = 25;
     static final String[] NOMBRES_ARMAS = {"Espada", "Hacha", "Daga"};
     static final String[] GOLPES_ARMAS = {"Tajo", "Hachazo", "Estocada"};
-    static final int[] ATAQUE_MIN_ARMAS = {10, 5, 13};
-    static final int[] ATAQUE_MAX_ARMAS = {20, 25, 17};
+    // Todas las armas pegan lo que dice el enunciado (10-20);
+    // solo cambia el nombre del arma y del golpe
+    static final int ATAQUE_MIN = 10;
+    static final int ATAQUE_MAX = 20;
     static final String[] NOMBRES_ENEMIGOS = {"Goblin", "Orco", "Dragon"};
     // Cada fila son los ataques de un enemigo; en cada turno usa uno al azar
     static final String[][] ATAQUES_ENEMIGOS = {

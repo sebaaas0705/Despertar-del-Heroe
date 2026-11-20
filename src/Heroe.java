@@ -34,8 +34,7 @@ public class Heroe
         for (int i = 0; i < Constantes.NOMBRES_ARMAS.length; i++)
         {
             System.out.println((i + 1) + ". " + Constantes.NOMBRES_ARMAS[i] + " ("
-                    + Constantes.ATAQUE_MIN_ARMAS[i] + "-"
-                    + Constantes.ATAQUE_MAX_ARMAS[i] + " de danio)");
+                    + Constantes.GOLPES_ARMAS[i] + ")");
         }
         int arma = Menu.leerOpcion(scanner, 1, Constantes.NOMBRES_ARMAS.length) - 1;
         System.out.println("Has elegido: " + Constantes.NOMBRES_ARMAS[arma] + ".");

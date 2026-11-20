@@ -17,12 +17,13 @@ public class Menu
         System.out.println("Empiezas con " + Constantes.VIDA_MAXIMA + " de vida y "
                 + Constantes.POCIONES_INICIALES + " pociones de "
                 + Constantes.CURACION_POCION + ".");
+        System.out.println("Tu ataque hace entre " + Constantes.ATAQUE_MIN + " y "
+                + Constantes.ATAQUE_MAX + " de danio con cualquier arma.");
         System.out.println("Al empezar eliges arma (y puedes cambiarla en combate):");
         for (int i = 0; i < Constantes.NOMBRES_ARMAS.length; i++)
         {
-            System.out.println("  " + Constantes.NOMBRES_ARMAS[i] + ": "
-                    + Constantes.ATAQUE_MIN_ARMAS[i] + "-"
-                    + Constantes.ATAQUE_MAX_ARMAS[i] + " de danio.");
+            System.out.println("  " + Constantes.NOMBRES_ARMAS[i] + " ("
+                    + Constantes.GOLPES_ARMAS[i] + ")");
         }
         System.out.println("Debes vencer a 3 enemigos seguidos:");
         for (int i = 0; i < Constantes.NOMBRES_ENEMIGOS.length; i++)
