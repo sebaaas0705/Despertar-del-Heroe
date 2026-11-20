@@ -9,6 +9,8 @@ public class Partida
 
         int[] estadoHeroe = Heroe.crearEstado(Heroe.elegirArma(scanner));
         String[] inventario = Heroe.crearInventario();
+        System.out.println(nombre + " empieza con " + estadoHeroe[Constantes.VIDA]
+                + " de vida y " + estadoHeroe[Constantes.POCIONES] + " pociones.");
 
         int puntos = 0;
         int resultado = Constantes.VICTORIA;
@@ -45,6 +47,8 @@ public class Partida
         {
             System.out.println("\nAbandonas la aventura, " + nombre + ".");
         }
+        System.out.println("Enemigos derrotados: " + enemigo + " de "
+                + Constantes.VIDA_ENEMIGOS.length);
         System.out.println("Puntuacion final: " + puntos);
 
         numRegistros = Ranking.registrarEnRanking(nombresRanking, puntosRanking,
