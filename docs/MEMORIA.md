@@ -267,3 +267,55 @@ Commits representativos:
   haciendo las pruebas.
 
 *(Añadir captura de `git log --oneline --graph --all` o de la red de ramas de GitHub.)*
+
+---
+
+## 7. Uso de IA
+
+*(Obligatorio según el apartado 10 del enunciado. Rellenar con lo que se haya usado
+de verdad, o declarar expresamente que no se ha usado.)*
+
+- **Herramienta(s):**
+- **Para qué tareas:**
+- **Ejemplos de instrucciones (prompts):**
+- **Qué se incorporó y qué se cambió:**
+- **Cómo se comprobó (pruebas, revisión del código, explicación de cada método):**
+
+---
+
+## 8. Conclusiones y recursos
+
+### Resultados
+
+El juego cumple las reglas comunes: menú con `do-while` y `switch`, tres combates
+con `while`, pociones con array fijo y contador, ranking de 10 con arrays paralelos
+ordenado y con empates, validación de todas las entradas y guardado en XML. Además
+tiene armas, ataques con nombre y el ranking en HTML.
+
+### Dificultades
+
+- Entender por qué un `int` modificado dentro de un método no cambia fuera y por
+  qué con un array sí.
+- El salto de línea que deja `nextInt()` en el `Scanner`.
+- Desplazar los dos arrays del ranking a la vez sin perder ningún registro, sobre
+  todo con el ranking lleno.
+- Leer y escribir XML con DOM y aplicar la plantilla XSL.
+
+### Aprendizajes
+
+Dividir el programa en métodos pequeños que reciben lo que necesitan hace que sea
+más fácil probar cada parte y encontrar los fallos. Trabajar con ramas en Git
+ayuda a tener cada cambio separado.
+
+### Mejoras posibles
+
+- Guardar también la fecha de cada partida en el ranking.
+- Más enemigos o niveles de dificultad.
+- Un objeto que se pueda encontrar al ganar un combate.
+
+### Fuentes consultadas
+
+- Apuntes y ejercicios de clase de Programación y Lenguaje de marcas.
+- Documentación oficial de Java: `java.util.Scanner`, `Math.random()`,
+  `javax.xml.parsers` y `javax.xml.transform`.
+- Enunciado del proyecto "El despertar del héroe".
