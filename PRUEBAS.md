@@ -36,3 +36,16 @@ atacar (después de "Goblin derrotado!" no sale ningún ataque del Goblin).
 Al probar el caso 6 salía "Te curas 25. Vida: 100." aunque el héroe tenía 89, o sea
 que en realidad solo se curaba 11. Se cambió `usarPocion` para calcular lo que se
 cura de verdad (`vida después - vida antes`).
+
+## Ranking
+
+| # | Caso | Entrada | Resultado esperado | Resultado obtenido | ¿OK? |
+|---|------|---------|--------------------|--------------------|------|
+| 9 | Ranking vacío | Sin `ranking.xml`, opción 2 (`03_ranking_vacio_y_ayuda.txt`) | Mensaje informativo | "Todavia no hay partidas registradas." | Sí |
+| 10 | Ranking entre partidas | Jugar, salir y volver a abrir el programa | Las puntuaciones se cargan desde `ranking.xml` | Al abrir otra vez, la opción 2 muestra las partidas anteriores | Sí |
+| 11 | Empate | Dos partidas con 0 puntos (Sebas y luego Ana) | El registro más antiguo queda delante | 1. Sebas - 0, 2. Ana - 0 | Sí |
+| 12 | Ranking lleno, puntuación baja | `ranking_lleno.xml` (el décimo tiene 100) y abandonar con 0 (`04`) | No entra | "Tu puntuacion no entra en el ranking." y siguen los mismos 10 | Sí |
+| 13 | Ranking lleno, empate con el décimo | Mismo ranking, vencer al Goblin y abandonar con 100 (`06`) | No entra porque tiene que ser mayor que el décimo | 100 puntos y "Tu puntuacion no entra en el ranking." | Sí |
+| 14 | Ranking lleno, puntuación alta | Mismo ranking y ganar la partida | Entra en su sitio y se pierde el décimo | Ganó con 327: "Registrado en el ranking en la posicion 3." (detrás de 380 y 350) y Dani (100) desaparece del XML | Sí |
+| 15 | Reinicio de partida | Gastar una poción, abandonar y empezar otra (`07`) | La segunda empieza con 100 de vida y 3 pociones | "Segunda empieza con 100 de vida y 3 pociones." e inventario 3/3 | Sí |
+| 16 | HTML del ranking | Terminar una partida y abrir `ranking.html` | Tabla con puesto, nombre y puntos generada con `ranking.xsl` | Se crea la tabla en el mismo orden que el XML | Sí |
