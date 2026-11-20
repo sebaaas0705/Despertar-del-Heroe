@@ -35,9 +35,12 @@ public class Pocima
         inventario[posicion] = null;
         estadoHeroe[Constantes.POCIONES]--;
 
+        // Si la vida pasaria de 100 se queda en 100, asi que se cura menos de 25
+        int vidaAntes = estadoHeroe[Constantes.VIDA];
         estadoHeroe[Constantes.VIDA] = Math.min(Constantes.VIDA_MAXIMA,
-                estadoHeroe[Constantes.VIDA] + Constantes.CURACION_POCION);
-        System.out.println("Te curas " + Constantes.CURACION_POCION + ". Vida: "
+                vidaAntes + Constantes.CURACION_POCION);
+        int curado = estadoHeroe[Constantes.VIDA] - vidaAntes;
+        System.out.println("Te curas " + curado + ". Vida: "
                 + estadoHeroe[Constantes.VIDA] + ".");
         return true;
     }
