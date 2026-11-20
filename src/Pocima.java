@@ -13,7 +13,13 @@ public class Pocima
             return false;
         }
 
+        // Se retira la ultima posicion ocupada; nunca se sale del array
         int posicion = estadoHeroe[Constantes.POCIONES] - 1;
+        if (posicion < 0 || posicion >= inventario.length || inventario[posicion] == null)
+        {
+            System.out.println("Esa posicion del inventario esta vacia.");
+            return false;
+        }
         inventario[posicion] = null;
         estadoHeroe[Constantes.POCIONES]--;
 
@@ -33,7 +39,9 @@ public class Pocima
         }
         for (int i = 0; i < numPociones; i++)
         {
-            System.out.println((i + 1) + ". " + inventario[i]);
+            System.out.println((i + 1) + ". " + inventario[i] + " (+"
+                    + Constantes.CURACION_POCION + " de vida)");
         }
+        System.out.println("Huecos ocupados: " + numPociones + "/" + inventario.length);
     }
 }
