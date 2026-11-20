@@ -41,3 +41,7 @@ out/
 /ranking.xml
 /inventario.xml
 /ranking.html
+
+# Salidas de las pruebas automaticas
+pruebas/salidas/
+*.bak
