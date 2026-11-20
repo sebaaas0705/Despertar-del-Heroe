@@ -1,5 +1,16 @@
+/**
+ * Comportamiento del enemigo durante el combate.
+ */
 public class Enemigo
 {
+    /**
+     * El enemigo elige uno de sus ataques al azar y quita vida al heroe.
+     * La vida se deja en 0 como minimo para que nunca sea negativa.
+     *
+     * @param estadoHeroe   {vida, pociones, arma}; la vida cambia por referencia
+     * @param nombreEnemigo nombre del enemigo para el mensaje
+     * @param ataques       nombres de los ataques posibles de este enemigo
+     */
     static void atacar(int[] estadoHeroe, String nombreEnemigo, String[] ataques)
     {
         // Elige uno de sus ataques al azar

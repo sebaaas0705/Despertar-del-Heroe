@@ -1,7 +1,22 @@
 import java.util.Scanner;
 
+/**
+ * Desarrollo de una partida completa: tres encuentros seguidos.
+ */
 public class Partida
 {
+    /**
+     * Crea un heroe nuevo (todos los datos reiniciados), encadena los tres
+     * combates, calcula la puntuacion y registra la partida en el ranking,
+     * tambien si termina por derrota o abandono.
+     * Puntuacion = 100 x enemigos derrotados + vida final solo si gana los 3.
+     *
+     * @param scanner        lector de teclado
+     * @param nombresRanking array de nombres del ranking
+     * @param puntosRanking  array de puntuaciones del ranking
+     * @param numRegistros   registros ocupados antes de la partida
+     * @return registros ocupados despues de la partida
+     */
     static int iniciarPartida(Scanner scanner, String[] nombresRanking,
             int[] puntosRanking, int numRegistros)
     {

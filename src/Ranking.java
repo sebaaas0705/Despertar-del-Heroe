@@ -1,5 +1,21 @@
+/**
+ * Ranking en memoria con dos arrays paralelos: nombres[i] y puntos[i] son
+ * siempre del mismo jugador. Se mantiene ordenado de mayor a menor.
+ */
 public class Ranking
 {
+    /**
+     * Registra una partida terminada y avisa al jugador de su puesto.
+     * Devuelve el numero de registros porque es un int (se pasa por copia) y el
+     * metodo no podria cambiarlo; los arrays si cambian por referencia.
+     *
+     * @param nombres      array de nombres del ranking
+     * @param puntos       array de puntuaciones del ranking
+     * @param numRegistros registros ocupados antes de insertar
+     * @param nombre       nombre del heroe
+     * @param puntosNuevos puntos obtenidos en la partida
+     * @return numero de registros ocupados despues de insertar
+     */
     static int registrarEnRanking(String[] nombres, int[] puntos,
             int numRegistros, String nombre, int puntosNuevos)
     {
@@ -19,6 +35,19 @@ public class Ranking
         return numRegistros;
     }
 
+    /**
+     * Inserta un registro en su sitio desplazando los peores una posicion.
+     * En un empate el nuevo queda detras del antiguo, porque solo se para cuando
+     * es estrictamente mayor. Con el ranking lleno solo entra si supera al decimo,
+     * y el ultimo registro se pierde.
+     *
+     * @param nombres      array de nombres del ranking
+     * @param puntos       array de puntuaciones del ranking
+     * @param numRegistros registros ocupados antes de insertar
+     * @param nombre       nombre del jugador
+     * @param puntosNuevos puntos del jugador
+     * @return posicion donde se ha insertado, o -1 si no entra
+     */
     static int insertarOrdenado(String[] nombres, int[] puntos,
             int numRegistros, String nombre, int puntosNuevos)
     {
@@ -47,6 +76,13 @@ public class Ranking
         return posicion;
     }
 
+    /**
+     * Muestra el ranking por consola o un aviso si todavia esta vacio.
+     *
+     * @param nombres      array de nombres
+     * @param puntos       array de puntuaciones
+     * @param numRegistros registros ocupados
+     */
     static void mostrarRanking(String[] nombres, int[] puntos, int numRegistros)
     {
         System.out.println("\n--- RANKING ---");

@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
+/**
+ * Creacion de los datos del heroe al empezar cada partida.
+ * No es una clase de dominio: solo agrupa metodos static que devuelven
+ * arrays basicos con el estado inicial.
+ */
 public class Heroe
 {
+    /**
+     * Pide el nombre del heroe y no deja continuar si queda vacio
+     * (tambien si solo se escriben espacios, gracias a trim()).
+     *
+     * @param scanner lector de teclado
+     * @return nombre no vacio y sin espacios a los lados
+     */
     static String leerNombre(Scanner scanner)
     {
         String nombre = "";
@@ -23,11 +35,25 @@ public class Heroe
         return nombre;
     }
 
+    /**
+     * Crea el estado inicial del heroe. Se usa un int[] y no tres int sueltos
+     * porque los arrays se pasan por referencia: si simularCombate cambia la vida,
+     * el cambio se ve fuera del metodo.
+     *
+     * @param arma posicion del arma elegida en Constantes.NOMBRES_ARMAS
+     * @return array {vida, pociones, arma} con los valores iniciales
+     */
     static int[] crearEstado(int arma)
     {
         return new int[] {Constantes.VIDA_MAXIMA, Constantes.POCIONES_INICIALES, arma};
     }
 
+    /**
+     * Muestra las armas disponibles y deja elegir una.
+     *
+     * @param scanner lector de teclado
+     * @return posicion del arma elegida (empieza en 0)
+     */
     static int elegirArma(Scanner scanner)
     {
         System.out.println("\n--- Elige tu arma ---");
@@ -41,6 +67,12 @@ public class Heroe
         return arma;
     }
 
+    /**
+     * Crea un inventario nuevo con todas las pociones iniciales.
+     * Cada partida llama a este metodo, asi que los datos se reinician.
+     *
+     * @return array de tamano fijo con las pociones en las primeras posiciones
+     */
     static String[] crearInventario()
     {
         String[] inventario = new String[Constantes.CAPACIDAD_INVENTARIO];

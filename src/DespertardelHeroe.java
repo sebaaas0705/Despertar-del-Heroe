@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * EL DESPERTAR DEL HEROE - aventura textual por turnos.
+ * Clase principal: carga los datos guardados y gestiona el menu con
+ * do-while y switch. El trabajo real esta en los metodos de las otras clases.
+ */
 public class DespertardelHeroe
 {
     public static void main(String[] args)

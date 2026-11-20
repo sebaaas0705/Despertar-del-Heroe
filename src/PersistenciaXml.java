@@ -10,8 +10,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+/**
+ * Guardado y carga del ranking y del inventario en ficheros XML con DOM,
+ * y generacion de ranking.html aplicando la plantilla ranking.xsl.
+ * Los fallos de fichero se avisan por consola sin cerrar el juego.
+ */
 public class PersistenciaXml
 {
+    /**
+     * Escribe el ranking en ranking.xml (un nodo jugador por registro ocupado).
+     *
+     * @param nombres      array de nombres
+     * @param puntos       array de puntuaciones
+     * @param numRegistros registros ocupados
+     */
     static void guardarRanking(String[] nombres, int[] puntos, int numRegistros)
     {
         try
@@ -40,6 +52,13 @@ public class PersistenciaXml
         }
     }
 
+    /**
+     * Lee ranking.xml si existe y rellena los arrays, ya ordenados.
+     *
+     * @param nombres array de nombres a rellenar
+     * @param puntos  array de puntuaciones a rellenar
+     * @return numero de registros cargados (0 si no hay fichero o es invalido)
+     */
     static int cargarRanking(String[] nombres, int[] puntos)
     {
         int numRegistros = 0;
@@ -81,6 +100,12 @@ public class PersistenciaXml
         return numRegistros;
     }
 
+    /**
+     * Guarda en inventario.xml las pociones que le quedaban al heroe.
+     *
+     * @param inventario  array de pociones
+     * @param numPociones posiciones ocupadas
+     */
     static void guardarInventario(String[] inventario, int numPociones)
     {
         try
@@ -104,6 +129,13 @@ public class PersistenciaXml
         }
     }
 
+    /**
+     * Lee inventario.xml de la ultima partida. Solo se usa como informacion,
+     * porque cada partida nueva empieza con el inventario completo.
+     *
+     * @param inventario array a rellenar
+     * @return pociones leidas, o -1 si el fichero no existe
+     */
     static int cargarInventario(String[] inventario)
     {
         File fichero = new File(Constantes.FICHERO_INVENTARIO);
@@ -132,6 +164,9 @@ public class PersistenciaXml
         return numObjetos;
     }
 
+    /**
+     * Transforma ranking.xml en ranking.html con la plantilla ranking.xsl.
+     */
     static void generarHtmlRanking()
     {
         try
@@ -150,6 +185,13 @@ public class PersistenciaXml
         }
     }
 
+    /**
+     * Vuelca un documento DOM a fichero con sangria de 2 espacios.
+     *
+     * @param doc  documento a escribir
+     * @param ruta nombre del fichero de destino
+     * @throws Exception si no se puede escribir el fichero
+     */
     static void escribirXml(Document doc, String ruta) throws Exception
     {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();

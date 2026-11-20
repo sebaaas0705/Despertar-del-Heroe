@@ -1,7 +1,24 @@
 import java.util.Scanner;
 
+/**
+ * Resolucion de un encuentro por turnos entre el heroe y un enemigo.
+ */
 public class Combate
 {
+    /**
+     * Gestiona un combate completo con un bucle while hasta que haya resultado.
+     * Solo atacar o curarse con exito gastan turno y provocan la respuesta del
+     * enemigo; consultar inventario, cambiar arma o una curacion fallida no.
+     * Un enemigo con vida 0 nunca llega a atacar.
+     *
+     * @param scanner        lector de teclado
+     * @param estadoHeroe    {vida, pociones, arma}; se modifica por referencia
+     * @param inventario     pociones del heroe; se modifica por referencia
+     * @param nombreEnemigo  nombre que se muestra en los mensajes
+     * @param ataquesEnemigo nombres de los ataques del enemigo
+     * @param vidaEnemigo    vida inicial del enemigo (copia local, se pierde al salir)
+     * @return VICTORIA, DERROTA o ABANDONO (ver Constantes)
+     */
     static int simularCombate(Scanner scanner, int[] estadoHeroe,
             String[] inventario, String nombreEnemigo, String[] ataquesEnemigo, int vidaEnemigo)
     {
@@ -76,6 +93,15 @@ public class Combate
         return resultado;
     }
 
+    /**
+     * Numero entero aleatorio con Math.random() entre min y max, ambos incluidos.
+     * Math.random() da [0, 1); al multiplicar por (max - min + 1) y truncar
+     * salen los valores 0..(max - min), y al sumar min queda el rango pedido.
+     *
+     * @param min limite inferior (incluido)
+     * @param max limite superior (incluido)
+     * @return valor entre min y max
+     */
     static int numeroAleatorio(int min, int max)
     {
         return min + (int) (Math.random() * (max - min + 1));
